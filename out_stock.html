@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-header bg-danger text-white"><h5>📤 办理商品出库</h5></div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label class="form-label">商品货号 (SKU)</label>
+                        <input type="text" name="sku" class="form-control" placeholder="请输入要出库的商品货号" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">出库数量</label>
+                        <input type="number" name="quantity" class="form-control" min="1" value="1" required>
+                    </div>
+                    <button type="submit" class="btn btn-danger w-100">确认出库扣减</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

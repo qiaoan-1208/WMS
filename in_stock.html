@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-header bg-success text-white"><h5>📥 办理商品入库</h5></div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label class="form-label">商品货号 (SKU/条码)</label>
+                        <input type="text" name="sku" class="form-control" placeholder="例如：SKU-1001" required>
+                        <div class="form-text">若货号已存在，系统将自动累加库存。</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">商品名称</label>
+                        <input type="text" name="name" class="form-control" placeholder="例如：iPhone 15" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">入库数量</label>
+                        <input type="number" name="quantity" class="form-control" min="1" value="1" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">存放库位</label>
+                        <input type="text" name="location" class="form-control" placeholder="例如：A区-03货架">
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">确认入库</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>极简极速 WMS 系统</title>
+    <!-- 引入 Bootstrap 样式 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="/">仓库管理系统 (WMS)</a>
+            <div class="navbar-nav">
+                <a class="nav-link" href="/">📊 库存看板</a>
+                <a class="nav-link" href="/in">📥 商品入库</a>
+                <a class="nav-link" href="/out">📤 商品出库</a>
+                <a class="nav-link" href="/logs">📜 出入库流水</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 消息提示区 -->
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- 主体内容 -->
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

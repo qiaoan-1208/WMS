@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-header bg-secondary text-white"><h5>📜 历史出入库明细流水</h5></div>
+    <div class="card-body">
+        <table class="table table-sm table-striped">
+            <thead>
+                <tr>
+                    <th>操作时间</th>
+                    <th>商品货号</th>
+                    <th>商品名称</th>
+                    <th>类型</th>
+                    <th>变动数量</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in logs %}
+                <tr>
+                    <td>{{ log.timestamp }}</td>
+                    <td>{{ log.sku }}</td>
+                    <td>{{ log.name }}</td>
+                    <td>
+                        <span class="badge {% if log.type == '入库' %}bg-success{% else %}bg-danger{% endif %}">
+                            {{ log.type }}
+                        </span>
+                    </td>
+                    <td><strong>{{ log.quantity }}</strong></td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="5" class="text-center text-muted py-3">暂无任何操作记录。</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
